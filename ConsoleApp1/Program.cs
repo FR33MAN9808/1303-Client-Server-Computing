@@ -7,6 +7,7 @@ namespace _1303_week1
         static void Main(string[] args)
         {
             Console.WriteLine("Program was called with");
+            Console.WriteLine("Chuanche Liu 000462312");
             for (int i =0; i < args.Length; i++)
             {
                 Console.WriteLine(args[i]);
