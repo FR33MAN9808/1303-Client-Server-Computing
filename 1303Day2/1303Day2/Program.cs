@@ -1,4 +1,5 @@
 ﻿using System;
+using _1303Day2.Assignment_1;
 
 namespace _1303Day2
 {
@@ -8,6 +9,9 @@ namespace _1303Day2
         {
             Program program = new Program();
             program.TestReadLine();
+            UserInput userInput = new UserInput();
+            int option = userInput.GetUserChoice();
+            Console.WriteLine(option);
         }
 
         public void TestReadLine()
