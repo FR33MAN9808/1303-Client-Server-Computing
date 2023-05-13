@@ -16,10 +16,7 @@ namespace Assignment1
 
             do
             {
-                for (int i = 1; i <= 10; i++)
-                {
-                    Console.WriteLine($"{i} - Option{i}");
-                };
+                Console.WriteLine("1 -- A\n2 -- B\n3 -- C\n4 -- D\n5 -- E\n6 -- F\n7 -- G\n8 -- H\n9 -- I\n10 -- J");
 
                 Console.Write("Please select one option from above: ");
                 userChoice = Console.ReadLine();
@@ -27,8 +24,48 @@ namespace Assignment1
 
                 if (numChoice > 0 && numChoice < 11)
                 {
-                    Console.WriteLine($"{numChoice} - Option{numChoice}");
-                    return 0;
+                    switch(numChoice)
+                    {
+                        case 1:
+                            Console.WriteLine("A");
+                            break;
+
+                        case 2:
+                            Console.WriteLine("B");
+                            break;
+
+                        case 3:
+                            Console.WriteLine("C");
+                            break;
+
+                        case 4:
+                            Console.WriteLine("D");
+                            break;
+
+                        case 5:
+                            Console.WriteLine("E");
+                            break;
+
+                        case 6:
+                            Console.WriteLine("F");
+                            break;
+
+                        case 7:
+                            Console.WriteLine("G");
+                            break;
+
+                        case 8:
+                            Console.WriteLine("H");
+                            break;
+
+                        case 9:
+                            Console.WriteLine("I");
+                            break;
+
+                        case 10:
+                            Console.WriteLine("J");
+                            break;
+                    }
                 }
                 else
                 {
