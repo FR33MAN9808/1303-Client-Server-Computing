@@ -6,7 +6,12 @@ using System.Threading.Tasks;
 
 namespace Assignment3
 {
-    internal class Truck
+    internal class Truck : Car
     {
+        public Truck(string brand, int maxSpeed) : base(brand, maxSpeed)
+        {
+            this.brand = brand;
+            this.maxSpeed = maxSpeed;
+        }
     }
 }
