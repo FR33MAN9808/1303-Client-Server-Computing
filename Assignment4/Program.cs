@@ -7,7 +7,8 @@ internal class Program
         Console.WriteLine("Hello, World!");
         Car car = new Car();
         car.Brand = "Ford";
-        Console.WriteLine(car.Brand);
+        car.MaximumSpeed = 180;
+        Console.WriteLine(car.Brand, car.MaximumSpeed);
     }
 
     public abstract class Vehicle
