@@ -2,20 +2,20 @@
 
 namespace ClntSrvrWk1.Lessons.Week4.ObjectType
 {
-    public class MyStack
+    public class MyStack<T>
     {
         private int size;
         private int position;
-        private object[] items;
+        private T[] items;
 
         public MyStack(int stackSize)
         {
             size = stackSize;
-            items = new object[size];
+            items = new T[size];
             position = -1;
         }
 
-        public void Push(object obj)
+        public void Push(T obj)
         {
             if (position == size - 1)
             {
@@ -33,7 +33,7 @@ namespace ClntSrvrWk1.Lessons.Week4.ObjectType
             return items[position--];
         }
 
-        public object Peak()
+        public T Peak()
         {
             if (position == -1)
             {
