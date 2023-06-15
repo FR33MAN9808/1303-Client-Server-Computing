@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using Assignment6;
+﻿using Assignment6;
 
 class Program
 {
@@ -10,7 +8,7 @@ class Program
     {
         List<User> users = new List<User>
         {
-            new RegularUser { Name = "John Doe", Username = "johndoe", Email = "johndoe@example.com" },
+            new RegularUser { Name = "Steve Liu", Username = "steveL", Email = "steveL@gmail.ca" },
             new RegularUser { Name = "Jane Smith", Username = "janesmith", Email = "janesmith@example.com" },
             new RegularUser { Name = "Mike Johnson", Username = "mikejohnson", Email = "mikejohnson@example.com" },
             new RegularUser { Name = "Sarah Adams", Username = "sarahadams", Email = "sarahadams@example.com" },
