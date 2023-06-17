@@ -1,0 +1,151 @@
+1.B
+2.B
+3.B
+4.C
+5.B
+6.D
+7.B
+8.D
+----------
+9.
+public class Program
+{
+    public static void Main()
+    {
+        string parameter = "Hello";
+
+        try
+        {
+            CallerFunction(parameter);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("An exception occurred: " + ex.Message);
+        }
+    }
+
+    public static void CallerFunction(string parameter)
+    {
+        try
+        {
+            CalledFunction(parameter);
+        }
+        catch (ArgumentException ex)
+        {
+            Console.WriteLine("Argument exception occurred: " + ex.Message);
+            throw; // Rethrow the exception if necessary
+        }
+        catch (Exception ex)
+        {
+            // Handle other exceptions
+            Console.WriteLine("An exception occurred: " + ex.Message);
+        }
+    }
+
+    public static void CalledFunction(string parameter)
+    {
+        if (string.IsNullOrEmpty(parameter))
+        {
+            throw new ArgumentException("Parameter cannot be null or empty.");
+        }
+        Console.WriteLine(parameter);
+    }
+}
+
+10.
+
+using System;
+
+public abstract class Vehicle
+{
+    public abstract int GetNumberOfWheels();
+    public abstract int GetMaxSpeed();
+}
+
+public class Motorcycle : Vehicle
+{
+    public override int GetNumberOfWheels()
+    {
+        return 2;
+    }
+
+    public override int GetMaxSpeed()
+    {
+        return 200;
+    }
+}
+
+public class Car : Vehicle
+{
+    public override int GetNumberOfWheels()
+    {
+        return 4;
+    }
+
+    public override int GetMaxSpeed()
+    {
+        return 150;
+    }
+}
+
+public class Program
+{
+    public static void Main()
+    {
+        Motorcycle motorcycle = new Motorcycle();
+        Car car = new Car();
+
+        Console.WriteLine("Motorcycle:");
+        Console.WriteLine("Number of wheels: " + motorcycle.GetNumberOfWheels());
+        Console.WriteLine("Max speed: " + motorcycle.GetMaxSpeed() + " mph");
+
+        Console.WriteLine();
+
+        Console.WriteLine("Car:");
+        Console.WriteLine("Number of wheels: " + car.GetNumberOfWheels());
+        Console.WriteLine("Max speed: " + car.GetMaxSpeed() + " mph");
+    }
+}
+
+11.
+
+public class Stack<T>
+    {
+        private int size;
+        private int position;
+        private T[] items;
+
+        public Stack(int stackSize)
+        {
+            size = stackSize;
+            items = new T[size];
+            position = -1;
+        }
+
+        public void Push(T obj)
+        {
+            if (position == size - 1)
+            {
+                throw new InvalidOperationException("Stack overflow!");
+            }
+            items[++position] = obj;
+        }
+
+        public object Pop()
+        {
+            if (position == -1)
+            {
+                throw new InvalidOperationException("Stack underflow!");
+            }
+            return items[position--];
+        }
+
+        public T Peak()
+        {
+            if (position == -1)
+            {
+                throw new InvalidOperationException("Stack is empty!");
+            }
+            return items[position];
+        }
+    }
