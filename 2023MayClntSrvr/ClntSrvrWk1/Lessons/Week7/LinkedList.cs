@@ -134,5 +134,32 @@
         {
             return this.count;
         }
+
+        public void Reverse()
+        {
+            if (this.count <= 1)
+            {
+                // Empty list or only one node, no need to reverse
+                return;
+            }
+
+            LinkedListNode<T> current = this.Head;
+            LinkedListNode<T> previous = null;
+            LinkedListNode<T> next = null;
+
+            while (current != null)
+            {
+                next = current.Next;  // Save the reference to the next node
+
+                current.Next = previous;  // Reverse the link
+
+                previous = current;  // Move previous and current one step forward
+                current = next;
+            }
+
+            // Swap Head and Tail pointers
+            this.Tail = this.Head;
+            this.Head = previous;
+        }
     }
 }
