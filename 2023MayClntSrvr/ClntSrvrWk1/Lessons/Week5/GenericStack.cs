@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Text;
+using System.Threading
 
 namespace ClntSrvrWk1.Lessons.Week5
 {
@@ -14,26 +15,43 @@ namespace ClntSrvrWk1.Lessons.Week5
         private int _size;
         private int _position;
         private T[] data;
+        private object _lock = new object();
 
-        //public GenericStack()
-        //{
-        //    this._size = 5;
-        //}
+        public GenericStack(int size)
+        {
+            if (size <= 0)
+            {
+                throw new ArgumentOutOfRangeException(nameof(size), "Size must be greater than zero.");
+            }
 
-        public GenericStack(int size) 
-        { 
             _size = size;
             data = new T[_size];
         }
 
         public void Push(T item)
         {
-            data[++_position] = item;
+            lock (_lock)
+            {
+                if (_position >= _size)
+                {
+                    throw new InvalidOperationException("Stack is full.");
+                }
+
+                data[_position++] = item;
+            }
         }
 
         public T Pop()
         {
-            return data[--_position];
+            lock (_lock)
+            {
+                if (_position <= 0)
+                {
+                    throw new InvalidOperationException("Stack is empty.");
+                }
+
+                return data[--_position];
+            }
         }
     }
 }
