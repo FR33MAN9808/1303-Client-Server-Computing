@@ -65,35 +65,7 @@
         /// </summary>
         public void RemoveTail()
         {
-            if (this.count == 0)
-            {
-                // List is empty, nothing to remove
-                return;
-            }
-            else if (this.count == 1)
-            {
-                // Only one node in the list
-                this.Head = null;
-                this.Tail = null;
-            }
-            else
-            {
-                LinkedListNode<T> current = this.Head;
-                LinkedListNode<T> previous = null;
 
-                // go through the list until reaching the tail node
-                while (current.Next != null)
-                {
-                    previous = current;
-                    current = current.Next;
-                }
-
-                // Remove the tail node
-                previous.Next = null;
-                this.Tail = previous;
-            }
-
-            this.count--;
         }
 
         public bool Remove(T data)
@@ -133,33 +105,6 @@
         public int GetCount()
         {
             return this.count;
-        }
-
-        public void Reverse()
-        {
-            if (this.count <= 1)
-            {
-                // Empty list or only one node, no need to reverse
-                return;
-            }
-
-            LinkedListNode<T> current = this.Head;
-            LinkedListNode<T> previous = null;
-            LinkedListNode<T> next = null;
-
-            while (current != null)
-            {
-                next = current.Next;  // Save the reference to the next node
-
-                current.Next = previous;  // Reverse the link
-
-                previous = current;  // Move previous and current one step forward
-                current = next;
-            }
-
-            // Swap Head and Tail pointers
-            this.Tail = this.Head;
-            this.Head = previous;
         }
     }
 }

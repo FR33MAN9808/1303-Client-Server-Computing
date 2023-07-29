@@ -1,7 +1,9 @@
 ﻿using ClntSrvrWk1.Lessons.Week4.ObjectType;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
+using MyLib = ClntSrvrWk1.Lessons.Week4.ObjectType;
 
 namespace ClntSrvrWk1.Lessons.Week5
 {
@@ -15,7 +17,7 @@ namespace ClntSrvrWk1.Lessons.Week5
             stack2.Push("123");
 
             var stack3 = new GenericStack<Car>(12);
-            var car1 = new Car(Color.GREEN);
+            var car1 = new Car(MyLib.Color.GREEN);
             stack3.Push(car1);
 
             // stack2.Push(car1);
@@ -29,8 +31,8 @@ namespace ClntSrvrWk1.Lessons.Week5
             GenericSwap<int>(ref x, ref y);
 
 
-            var c1 = new Car(Color.RED);
-            var c2 = new Car(Color.GREEN);
+            var c1 = new Car(MyLib.Color.RED);
+            var c2 = new Car(MyLib.Color.GREEN);
             GenericSwap(ref c1, ref c2);
         }
 
@@ -75,10 +77,10 @@ namespace ClntSrvrWk1.Lessons.Week5
         public void Test_Framework_Dictionary()
         {
             var dicOfCars = new Dictionary<string, Car>();
-            var c1 = new Car("1234", Color.RED);
-            var c2 = new Car("5644", Color.RED);
-            var c3 = new Car("2345", Color.RED);
-            var c4 = new Car("1900", Color.RED);
+            var c1 = new Car("1234", MyLib.Color.RED);
+            var c2 = new Car("5644", MyLib.Color.RED);
+            var c3 = new Car("2345", MyLib.Color.RED);
+            var c4 = new Car("1900", MyLib.Color.RED);
 
             dicOfCars.Add(c1.GetVin(), c1);
             dicOfCars.Add(c2.GetVin(), c2);
@@ -86,6 +88,15 @@ namespace ClntSrvrWk1.Lessons.Week5
             dicOfCars.Add(c4.GetVin(), c4);
 
             var item = dicOfCars["1900"];
+
+            var carCategoryCollection = new Dictionary<string, List<Car>>();
+
+            var sportsCars = new List<Car>()
+            {
+                new Car(MyLib.Color.RED) { Brand = "Ferrari", Year = 2022 }
+            };
+
+            carCategoryCollection.Add("sports", sportsCars);
         }
     }
 }

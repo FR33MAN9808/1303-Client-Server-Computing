@@ -9,7 +9,7 @@ namespace ClntSrvrWk1.Lessons.Week2
         private string message;
         private string messageTemplate;
 
-        public ExceptionThrowing(string messageTemplate, string message) 
+        public ExceptionThrowing(string messageTemplate, string message)
         {
             if (message == null)
             {

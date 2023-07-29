@@ -8,6 +8,11 @@ namespace ClntSrvrWk1.Lessons.Week4.ObjectType
     {
         private Color color;
         private string vin;
+        public string Brand {  get; set; }
+        public string Model { get; set; }
+        public string Builde { get; set; }
+        public int Year { get; set; }
+
 
         public Car(Color color)
         {

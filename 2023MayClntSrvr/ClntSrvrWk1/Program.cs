@@ -1,5 +1,10 @@
-﻿using ClntSrvr.Lessons.Week7;
+﻿using ClntSrvr.Lessons.Week10;
+using ClntSrvr.Lessons.Week7;
+using ClntSrvr.Lessons.Week8;
+using ClntSrvr.Lessons.Week9;
+using ClntSrvrWk1.Lessons.Week2;
 using System;
+using System.Threading.Tasks;
 
 namespace ClntSrvrWk1
 {
@@ -7,23 +12,24 @@ namespace ClntSrvrWk1
     {
         static void Main(string[] args)
         {
-            // var test = new DelegateExample();
-            // test.TestDelegateFunctionality();
+            var test = new StreamIntroduction();
+            test.FileStreamExample();
 
-            var test = new Program();
-            test.AddNodeToHead_ShouldAdd();
+            Console.WriteLine("main wating .. ");
+            Console.ReadLine();
         }
 
-        private void AddNodeToHead_ShouldAdd()
+        public void TestTasks()
         {
-            var linkedList = new LinkedList<int>();
-
-            linkedList.AddHead(new LinkedListNode<int>(2));
-
-            var count = linkedList.GetCount();
-            if (count != 1)
+            try
             {
-                throw new Exception("Count should be 1");
+                var testTasks = new TaskDetails();
+                testTasks.TaskWithReturnType();
+                testTasks.TaskThatThrows();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
             }
         }
     }
