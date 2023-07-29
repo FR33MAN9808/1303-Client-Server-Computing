@@ -12,43 +12,51 @@ namespace ContactManagerApplication
         private IStorage contactStorage = new Storage(10, 2);
         static void Main(string[] args)
         {
+            //user input
             int choice;
             Program program = new Program();
             do
             {
+                //starting menu
                 Console.WriteLine("Welcome to Contact Manager Service");
                 Console.WriteLine("********************");
                 Console.WriteLine("Please Choose an option:\n1) Create a new Contact\n2) Search for a Contact\n3) List all Contacts" +
                     "\n4) Save and Load from Server\n5) Quit Application");
                 Console.WriteLine("********************");
+                //get input
                 string input = Console.ReadLine();
-
-                int.TryParse(input, out choice);
-                switch (choice)
+                if (int.TryParse(input, out choice))
                 {
-                    case 1:
-                        program.createContact();
-                        break;
-                    case 2:
-                        program.searchContact();
-                        break;
-                    case 3:
-                        program.listAllContacts(); 
-                        break;
-                    case 4:
-                        Console.WriteLine("Invalid choice. Please enter a valid option.");
-                        break;
+                    switch (choice)
+                    {
+                        case 1:
+                            program.createContact();
+                            break;
+                        case 2:
+                            program.searchContact();
+                            break;
+                        case 3:
+                            program.listAllContacts();
+                            break;
+                        case 4:
+                            Console.WriteLine("Invalid choice. Please enter a valid option.");
+                            break;
 
-                    case 5:
-                        Console.WriteLine("Invalid choice. Please enter a valid option.");
-                        break;
+                        case 5:
+                            Console.WriteLine("Invalid choice. Please enter a valid option.");
+                            break;
 
-                    default:
-                        Console.WriteLine("Invalid choice. Please enter a valid option.");
-                        break;
+                        default:
+                            Console.WriteLine("Invalid choice. Please enter a valid option.");
+                            break;
+                    }
                 }
-            }
-            while (choice != 5);
+                else
+                {
+                    Console.WriteLine("Invalid input");
+                };
+
+            } while (choice != 5);
         }
 
         public void createContact()
@@ -61,38 +69,42 @@ namespace ContactManagerApplication
                 Console.WriteLine("1) Company\n2) An individual\n3) Quit");
                 Console.WriteLine("********************");
                 string input = Console.ReadLine();
-                int.TryParse(input, out choice);
-                switch (choice)
+                if (int.TryParse(input, out choice)) 
                 {
-                    case 1:
-                        createCompanyContact();
-                        break;
-                    case 2:
-                        createIndividualContact();
-                        break;
-                    case 3:
-                        break;
-                    default:
-                        Console.WriteLine("Invalid choice. Please enter a valid option.");
-                        break;
+                    switch (choice)
+                    {
+                        case 1:
+                            createCompanyContact();
+                            break;
+                        case 2:
+                            createIndividualContact();
+                            break;
+                        case 3:
+                            Console.WriteLine("Invalid choice. Please enter a valid option.");
+                            break;
+                        default:
+                            Console.WriteLine("Invalid choice. Please enter a valid option.");
+                            break;
+                    }
                 }
+                else
+                {
+                    Console.WriteLine("Invalid input");
+                }
+                
             } while (choice != 3);
         }
 
         public void createCompanyContact()
         {
-            Console.WriteLine("Enter Company Contact Details:");
-            Console.WriteLine("ID:");
+            Console.WriteLine("Company ID:");
             string id = Console.ReadLine();
-            Console.WriteLine("Name:");
+            Console.WriteLine("Company Name:");
             string name = Console.ReadLine();
-            Console.WriteLine("Address:");
-            // Add more properties as needed.
+            Console.WriteLine("Company Address:");
             string address = Console.ReadLine();
-            // Create a new company contact object
             IContact companyContact = new Company(id, name, address);
 
-        // Add the company contact to the storage
             contactStorage.Create(companyContact);
 
             Console.WriteLine("Company Contact created successfully!");
@@ -100,21 +112,15 @@ namespace ContactManagerApplication
 
         public void createIndividualContact()
         {
-            Console.WriteLine("Enter Individual Contact Details:");
             Console.WriteLine("ID:");
             string id = Console.ReadLine();
             Console.WriteLine("Name:");
             string name = Console.ReadLine();
             Console.WriteLine("Address:");
-            // Add more properties as needed.
             string address = Console.ReadLine();
-            // Add more properties as needed.
 
-            // Create a new individual contact object
             IContact individualContact = new Individual(id, name, address);
 
-
-            // Add the individual contact to the storage
             contactStorage.Create(individualContact);
 
             Console.WriteLine("Individual Contact created successfully!");
@@ -129,7 +135,6 @@ namespace ContactManagerApplication
             {
                 Console.WriteLine("Contact Found:");
                 Console.WriteLine($"ID: {contact.Id}, Name: {contact.Name}, Address: {contact.Address}");
-                // Print other properties if needed.
             }
             else
             {
@@ -150,7 +155,6 @@ namespace ContactManagerApplication
                 foreach (var contact in allContacts)
                 {
                     Console.WriteLine($"ID: {contact.Id}, Name: {contact.Name}");
-                    // Print other properties if needed.
                 }
             }
         }
